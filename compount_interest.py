@@ -26,7 +26,11 @@ def gather_principle():
        print("Please enter values greater than 0. ")
        pass
        gather_principle()
-
+    if principle < 1:
+       print("Please enter values greater than 0. ")
+       gather_principle()
+    else:
+       pass
 
 def gather_annual_rate():
     global annual_rate
@@ -37,7 +41,11 @@ def gather_annual_rate():
        print("Please enter values greater than 0. ")
        pass
        gather_annual_rate()
-
+    if annual_rate < 1:
+       print("Please enter values greater than 0. ")
+       gather_annual_rate()
+    else:
+       pass 
     
 def gather_num_compounds():
     global num_compounds
@@ -48,7 +56,11 @@ def gather_num_compounds():
        print("Please enter values greater than 0. ")
        pass
        gather_num_compounds()
-
+    if num_compounds < 1:
+       print("Please enter values greater than 0. ")
+       gather_num_compounds()
+    else:
+       pass
 
 def gather_num_years():
     global num_years
@@ -59,7 +71,11 @@ def gather_num_years():
        print("Please enter values greater than 0. ")
        pass
        gather_num_years()
-
+    if num_years < 1:
+       print("Please enter values greater than 0. ")
+       gather_num_years()
+    else:
+       pass
 
 
 gather_principle()
@@ -70,6 +86,7 @@ gather_num_years()
 amount=(principle*(pow((1 + (annual_rate/num_compounds)/100), num_compounds * num_years)))
 interest_earned=(amount-principle)
 
-print("In", int(num_years), "years your investment will be worth", locale.currency(amount, grouping=True))
-print("You would earn", locale.currency(interest_earned, grouping=True), "in", num_years, "years")
+print("\nIn", int(num_years), "years your investment will be worth", locale.currency(amount, grouping=True))
+print("You would earn", locale.currency(interest_earned, grouping=True), "in", int(num_years), "years")
+
 
