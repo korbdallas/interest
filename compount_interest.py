@@ -8,18 +8,68 @@
 #    n: Number of compounding periods per year
 #    t: Number of years
 
+import sys
 import math
 import locale
 
 locale.setlocale( locale.LC_ALL, '' )
-   # gather needed data 
-principle=int(input("Enter starting principle: \t"))
-annual_rate=float(input("Enter annual interest rate: \t"))
-num_compounds=int(input("Enter number of compounds per year: \t"))
-num_years=int(input("Enter number of years to invest: \t"))
 
-amount=float(principle*(pow((1 + (annual_rate/num_compounds)/100), num_compounds * num_years)))
-interest_earned=float(amount-principle)
- 
+
+  # gather needed data 
+
+def gather_principle():
+    global principle
+    principle=input("Enter starting principle: \t")
+    try:  # checks if input is numeric
+       principle = float(principle)
+    except:
+       print("Please enter values greater than 0. ")
+       pass
+       gather_principle()
+
+
+def gather_annual_rate():
+    global annual_rate
+    annual_rate=(input("Enter annual interest rate: \t"))
+    try:  # checks if input is numeric
+       annual_rate = float(annual_rate)
+    except:
+       print("Please enter values greater than 0. ")
+       pass
+       gather_annual_rate()
+
+    
+def gather_num_compounds():
+    global num_compounds
+    num_compounds=(input("Enter number of compounds per year: \t"))
+    try:  # checks if input is numeric
+       num_compounds = float(num_compounds)
+    except:
+       print("Please enter values greater than 0. ")
+       pass
+       gather_num_compounds()
+
+
+def gather_num_years():
+    global num_years
+    num_years=(input("Enter number of years to invest: \t"))
+    try:  # checks if input is numeric
+       num_years = float(num_years)
+    except:
+       print("Please enter values greater than 0. ")
+       pass
+       gather_num_years()
+
+
+
+gather_principle()
+gather_annual_rate()
+gather_num_compounds()
+gather_num_years()    
+
+amount=(principle*(pow((1 + (annual_rate/num_compounds)/100), num_compounds * num_years)))
+interest_earned=(amount-principle)
+
 print("In", int(num_years), "years your investment will be worth", locale.currency(amount, grouping=True))
 print("You would earn", locale.currency(interest_earned, grouping=True), "in", num_years, "years")
+
